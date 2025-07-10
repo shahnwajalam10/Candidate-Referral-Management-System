@@ -122,6 +122,7 @@ npm run preview
 
 Frontend will be available at `http://localhost:3000`
 
+
 ## 📁 Project Structure
 
 \`\`\`
@@ -174,6 +175,8 @@ candidate-referral-system/
 │   └── vite.config.js
 └── README.md
 \`\`\`
+
+
 
 ## 🔌 API Endpoints
 
@@ -500,6 +503,5 @@ For support and questions:
 
 ---
 
-**Built with ❤️ by [Your Name]**
+**Built with ❤️ by shahwnwaj alam**
 
-For more information, visit the [project repository](https://github.com/your-username/candidate-referral-system).
