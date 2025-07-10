@@ -63,6 +63,16 @@ const CandidateDetails = () => {
     }
   }
 
+  // Get the base API URL for file downloads
+  const getResumeUrl = () => {
+    if (!candidate?.resumeUrl) return null
+
+    const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000/api"
+    // Remove '/api' from the end to get the server base URL
+    const serverBaseUrl = baseUrl.replace("/api", "")
+    return `${serverBaseUrl}${candidate.resumeUrl}`
+  }
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-50">
@@ -95,14 +105,14 @@ const CandidateDetails = () => {
           </button>
 
           <div className="flex items-center space-x-3">
-            <StatusDropdown 
-              currentStatus={candidate.status} 
-              onStatusChange={handleStatusUpdate} 
-              disabled={isUpdating} 
+            <StatusDropdown
+              currentStatus={candidate.status}
+              onStatusChange={handleStatusUpdate}
+              disabled={isUpdating}
             />
 
-            <button 
-              onClick={handleDelete} 
+            <button
+              onClick={handleDelete}
               disabled={isDeleting}
               className="flex items-center px-4 py-2 bg-white border border-red-500 text-red-500 rounded-lg hover:bg-red-50 transition-colors"
             >
@@ -153,7 +163,10 @@ const CandidateDetails = () => {
                     <Mail className="h-5 w-5 text-gray-500 mt-0.5 mr-3 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500 uppercase tracking-wider">Email</p>
-                      <a href={`mailto:${candidate.email}`} className="text-gray-900 hover:text-blue-600 transition-colors">
+                      <a
+                        href={`mailto:${candidate.email}`}
+                        className="text-gray-900 hover:text-blue-600 transition-colors"
+                      >
                         {candidate.email}
                       </a>
                     </div>
@@ -162,7 +175,10 @@ const CandidateDetails = () => {
                     <Phone className="h-5 w-5 text-gray-500 mt-0.5 mr-3 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500 uppercase tracking-wider">Phone</p>
-                      <a href={`tel:${candidate.phone}`} className="text-gray-900 hover:text-blue-600 transition-colors">
+                      <a
+                        href={`tel:${candidate.phone}`}
+                        className="text-gray-900 hover:text-blue-600 transition-colors"
+                      >
                         {candidate.phone}
                       </a>
                     </div>
@@ -183,18 +199,20 @@ const CandidateDetails = () => {
                     <User className="h-5 w-5 text-gray-500 mt-0.5 mr-3 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500 uppercase tracking-wider">Referred By</p>
-                      <p className="text-gray-900">{candidate.referredBy?.name || 'N/A'}</p>
+                      <p className="text-gray-900">{candidate.referredBy?.name || "N/A"}</p>
                     </div>
                   </div>
                   <div className="flex items-start">
                     <Calendar className="h-5 w-5 text-gray-500 mt-0.5 mr-3 flex-shrink-0" />
                     <div>
                       <p className="text-sm text-gray-500 uppercase tracking-wider">Date Added</p>
-                      <p className="text-gray-900">{new Date(candidate.createdAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}</p>
+                      <p className="text-gray-900">
+                        {new Date(candidate.createdAt).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -213,7 +231,7 @@ const CandidateDetails = () => {
                     Resume
                   </h3>
                   <a
-                    href={`https://candidate-referral-management-system-lx2s.onrender.com${candidate.resumeUrl}`}
+                    href={getResumeUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
@@ -229,8 +247,19 @@ const CandidateDetails = () => {
                 <div className="bg-gray-50 p-6 rounded-lg">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                     <span className="bg-black text-white p-2 rounded-full mr-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        />
                       </svg>
                     </span>
                     Additional Notes

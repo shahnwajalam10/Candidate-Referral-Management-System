@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { candidatesAPI } from "../services/api"
 import toast from "react-hot-toast"
-import { Eye, Trash2, Download, Mail, Phone, CalendarDays, UserCircle2 } from "lucide-react"
+import { Eye, Trash2, Mail, Phone, CalendarDays, UserCircle2 } from "lucide-react"
 import StatusBadge from "./StatusBadge"
 import StatusDropdown from "./StatusDropdown"
 
@@ -44,8 +44,10 @@ const CandidateCard = ({ candidate, onUpdate, onDelete }) => {
   }
 
   return (
-    <div 
-      className={`relative border border-gray-200 rounded-lg p-6 transition-all duration-200 ${isHovered ? 'shadow-lg border-gray-300' : 'shadow-sm'}`}
+    <div
+      className={`relative border border-gray-200 rounded-lg p-6 transition-all duration-200 ${
+        isHovered ? "shadow-lg border-gray-300" : "shadow-sm"
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -71,7 +73,7 @@ const CandidateCard = ({ candidate, onUpdate, onDelete }) => {
         </div>
         <div className="flex items-center text-sm text-gray-600">
           <Phone className="h-4 w-4 mr-2 text-gray-500" />
-          <span>{candidate.phone || 'Not provided'}</span>
+          <span>{candidate.phone || "Not provided"}</span>
         </div>
         {candidate.referredBy?.name && (
           <div className="flex items-center text-sm text-gray-600">
@@ -95,32 +97,22 @@ const CandidateCard = ({ candidate, onUpdate, onDelete }) => {
             <Eye className="h-4 w-4 mr-1.5" />
             Details
           </Link>
-
-          {candidate.resumeUrl && (
-            <a
-              href={`https://candidate-referral-management-system-lx2s.onrender.com${candidate.resumeUrl}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center mr-2 px-3 py-1.5 text-sm bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-md transition-colors border border-gray-200"
-            >
-              <Download className="h-4 w-4 mr-1.5" />
-              Resume
-            </a>
-          )}
         </div>
 
         <div className="flex items-center space-x-3">
-          <StatusDropdown 
-            currentStatus={candidate.status} 
-            onStatusChange={handleStatusUpdate} 
-            disabled={isUpdating} 
+          <StatusDropdown
+            currentStatus={candidate.status}
+            onStatusChange={handleStatusUpdate}
+            disabled={isUpdating}
             className="min-w-[120px]"
           />
 
           <button
             onClick={handleDelete}
             disabled={isDeleting}
-            className={`p-1.5 rounded-md transition-colors ${isDeleting ? 'text-gray-400' : 'text-gray-500 hover:text-red-600 hover:bg-red-50'}`}
+            className={`p-1.5 rounded-md transition-colors ${
+              isDeleting ? "text-gray-400" : "text-gray-500 hover:text-red-600 hover:bg-red-50"
+            }`}
             aria-label="Delete candidate"
           >
             <Trash2 className="h-4 w-4" />
