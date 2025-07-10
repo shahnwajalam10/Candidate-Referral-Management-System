@@ -98,7 +98,7 @@ const CandidateCard = ({ candidate, onUpdate, onDelete }) => {
 
           {candidate.resumeUrl && (
             <a
-              href={`http://localhost:5000${candidate.resumeUrl}`}
+              href={`https://candidate-referral-management-system-lx2s.onrender.com${candidate.resumeUrl}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center mr-2 px-3 py-1.5 text-sm bg-gray-50 hover:bg-gray-100 text-gray-700 rounded-md transition-colors border border-gray-200"

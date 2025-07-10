@@ -213,7 +213,7 @@ const CandidateDetails = () => {
                     Resume
                   </h3>
                   <a
-                    href={`http://localhost:5000${candidate.resumeUrl}`}
+                    href={`https://candidate-referral-management-system-lx2s.onrender.com${candidate.resumeUrl}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
